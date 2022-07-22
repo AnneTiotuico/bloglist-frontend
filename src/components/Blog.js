@@ -13,7 +13,7 @@ const Blog = ({ blog, user, handleUpdateLikes, handleDeleteBlog }) => {
 
   const hideWhenVisible = { display: visible ? 'none' : '' }
   const showWhenVisible = { display: visible ? '' : 'none' }
-  const showToUser = { display: (user.id === (blog.user.id || blog.user)) ? '' : 'none'}
+  const showToUser = { display: (user.id === (blog.user.id || blog.user)) ? '' : 'none' }
 
   const toggleVisibility = () => {
     setVisible(!visible)
@@ -21,7 +21,7 @@ const Blog = ({ blog, user, handleUpdateLikes, handleDeleteBlog }) => {
 
   const updateLikes = (event) => {
     event.preventDefault()
-    let likedBlog = {...blog, likes: blog.likes += 1 }
+    let likedBlog = { ...blog, likes: blog.likes += 1 }
     handleUpdateLikes(likedBlog)
   }
 
@@ -39,11 +39,11 @@ const Blog = ({ blog, user, handleUpdateLikes, handleDeleteBlog }) => {
       </div>
       <div style={showWhenVisible}>
         {blog.url}<br/>
-        likes {blog.likes}<button onClick={updateLikes} style={{marginLeft : 5}}>like</button><br/>
+        likes {blog.likes}<button onClick={updateLikes} style={{ marginLeft : 5 }}>like</button><br/>
         {blog.user.name}<br/>
         <button onClick={deleteBlog} style={showToUser}>remove</button>
       </div>
-  </div>
-)}
+    </div>
+  )}
 
 export default Blog
