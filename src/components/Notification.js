@@ -15,13 +15,13 @@ const Notification = ({ message, msgType }) => {
     notifStyle.color = 'red'
     notifStyle.borderColor = 'red'
   }
-  
+
   if (message === null) {
     return null
   }
 
   return (
-    <div style={notifStyle}>
+    <div style={notifStyle} className="notification">
       {message}
     </div>
   )

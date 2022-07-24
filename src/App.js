@@ -23,7 +23,7 @@ const App = () => {
   }, [])
 
   useEffect(() => {
-    const loggedUserJSON = window.localStorage.getItem('loggedNoteappUser')
+    const loggedUserJSON = window.localStorage.getItem('loggedBlogappUser')
     if (loggedUserJSON) {
       const user = JSON.parse(loggedUserJSON)
       setUser(user)
@@ -39,7 +39,7 @@ const App = () => {
       })
 
       window.localStorage.setItem(
-        'loggedNoteappUser', JSON.stringify(user)
+        'loggedBlogappUser', JSON.stringify(user)
       )
       blogService.setToken(user.token)
       setUser(user)
@@ -57,7 +57,7 @@ const App = () => {
   const handleLogout = (event) => {
     event.preventDefault()
 
-    window.localStorage.removeItem('loggedNoteappUser')
+    window.localStorage.removeItem('loggedBlogappUser')
     setUser(null)
     setUsername('')
     setPassword('')
@@ -135,10 +135,8 @@ const App = () => {
     </Togglable>
   )
 
-  console.log(blogs)
-
   const blogsList = () => (
-    <>
+    <div>
       <h2>blogs</h2>
       <p>{user.name} logged-in</p>
       <button onClick={handleLogout}>logout</button>
@@ -146,7 +144,7 @@ const App = () => {
       {blogs.sort((a, b) => b.likes - a.likes).map(blog =>
         <Blog key={blog.id} blog={blog} user={user} handleUpdateLikes={handleUpdateLikes} handleDeleteBlog={handleDeleteBlog}/>
       )}
-    </>
+    </div>
   )
 
   return (
